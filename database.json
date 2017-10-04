@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "driver": "pg",
+    "user": "postgres",
+    "password": {"ENV": "PGPASSWORD"},
+    "host": "db",
+    "database": "scavenger",
+    "schema": "scavenger"
+  }
+}

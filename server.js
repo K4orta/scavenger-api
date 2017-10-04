@@ -1,0 +1,25 @@
+require('dotenv').config()
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
+const multer = require('multer')
+const cors = require('cors')
+const upload = multer({ dest: 'public' })
+const cookieParser = require('cookie-parser')
+const helmet = require('helmet')
+
+require('./scripts/wait-for-postgres')
+
+app.use(helmet())
+app.use(cors())
+app.use(cookieParser())
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.get('/', (req, res) => res.json("Link up!"))
+app.post('/upload', upload.single('file'), require('./controllers/upload'))
+app.post('/webhook', require('./controllers/webhook'))
+app.get('/tries', require('./controllers/tries'))
+app.get('/identify', require('./controllers/identify'))
+
+app.use(express.static('public'))
+app.listen(5000)
