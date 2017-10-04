@@ -23,23 +23,3 @@ services:
       POSTGRES_PASSWORD: "${PGPASSWORD}"
       POSTGRES_DB: "${PGDATABASE}"
       POSTGRES_USER: postgres
-    networks:
-    - frontend
-  server:
-    image: abiosoft/caddy
-    ports:
-    - 80:80
-    - 433:433
-    - 2015:2015
-    restart: always
-    environment:
-    - DUMP_CADDY_CONFIG=true
-    - TLS_AGREE=true
-    - CADDY_EMAIL=k4orta@gmail.com
-    volumes:
-    - ./.caddy:/root/.caddy
-    - ./Caddyfile:/etc/Caddyfile
-    networks:
-    - frontend
-networks:
-  frontend:
