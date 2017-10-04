@@ -13,8 +13,6 @@ services:
     - db
     links:
     - db
-    networks:
-    - frontend
   db:
     image: "postgres"
     expose:
