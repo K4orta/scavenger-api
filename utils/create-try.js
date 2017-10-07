@@ -1,6 +1,5 @@
 const { Client } = require('pg')
 
-
 function createTry(photoUrl, userPhone) {
   const client = new Client()
   client.connect()
