@@ -18,9 +18,10 @@ exports.up = function(db) {
   return db.createTable('tries', {
     id: { type: 'int', primaryKey: true, autoIncrement: true },
     photo_url: 'string',
-    device_id: { type: 'string', notNull: true },
-    location: 'int',
-    created_at: 'datetime'
+    user_phone: 'string',
+    completed_at: 'datetime',
+    created_at: 'datetime',
+    matched_to: 'int'
   });
 };
 
